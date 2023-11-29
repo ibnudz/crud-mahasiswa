@@ -1,5 +1,5 @@
 <?php
-
+require_once("include/session.php");
 require_once("koneksi.php");
 
 $query = "SELECT COUNT(*) AS total_fakultas FROM fakultas";

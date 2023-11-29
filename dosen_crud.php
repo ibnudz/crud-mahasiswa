@@ -13,7 +13,7 @@ if (isset($_POST['tambah'])) {
     $insertQuery = "INSERT INTO dosen (nama_lengkap, jenis_kelamin, agama, no_telepon, email, alamat, jurusan, almamater)
                     VALUES ('$nama', '$jenisKelamin', '$agama', '$noTelepon', '$email', '$alamat', '$jurusan', '$almamater')";
     $conn->query($insertQuery);
-    header("Location: index.php");
+    header("Location: dosen.php");
 }
 
 if (isset($_POST['update'])) {
@@ -30,13 +30,13 @@ if (isset($_POST['update'])) {
                     no_telepon='$noTelepon', email='$email', alamat='$alamat', jurusan='$jurusan', almamater='$almamater'
                     WHERE id=$id";
     $conn->query($updateQuery);
-    header("Location: index.php");
+    header("Location: dosen.php");
 }
 
 if (isset($_POST['hapus'])) {
     $id = $_POST['id'];
     $deleteQuery = "DELETE FROM dosen WHERE id=$id";
     $conn->query($deleteQuery);
-    header("Location: index.php");
+    header("Location: dosen.php");
 }
 ?>

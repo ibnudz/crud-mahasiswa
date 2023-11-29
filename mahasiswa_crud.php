@@ -17,7 +17,7 @@ if (isset($_POST['tambah'])) {
     $idBiodata = $conn->insert_id;
     $insertQuery = "INSERT INTO mahasiswa (id_biodata, id_prodi, semester) VALUES ('$idBiodata', '$prodi', 1)";
     $conn->query($insertQuery);
-    header("Location: index.php");
+    header("Location: mahasiswa.php");
 }
 
 if (isset($_POST['update'])) {
@@ -37,7 +37,7 @@ if (isset($_POST['update'])) {
     $conn->query($updateQuery);
     $updateQuery = "UPDATE mahasiswa SET id_prodi='$prodi' WHERE id_biodata=$id";
     $conn->query($updateQuery);
-    header("Location: index.php");
+    header("Location: mahasiswa.php");
 }
 
 if (isset($_POST['hapus'])) {
@@ -46,6 +46,6 @@ if (isset($_POST['hapus'])) {
     $conn->query($deleteQuery);
     $deleteQuery = "DELETE FROM biodata WHERE id=$id";
     $conn->query($deleteQuery);
-    header("Location: index.php");
+    header("Location: mahasiswa.php");
 }
 ?>

@@ -10,7 +10,7 @@ if (isset($_POST['tambah'])) {
     $insertQuery = "INSERT INTO matakuliah (kd_matakuliah, nama_matakuliah, id_prodi, semester, sks)
                     VALUES ('$kdMatakuliah', '$namaMatakuliah', $prodi, $semester, $sks)";
     $conn->query($insertQuery);
-    header("Location: index.php");
+    header("Location: matakuliah.php");
 }
 
 if (isset($_POST['update'])) {
@@ -24,13 +24,13 @@ if (isset($_POST['update'])) {
                     id_prodi=$prodi, semester=$semester, sks=$sks
                     WHERE id=$id";
     $conn->query($updateQuery);
-    header("Location: index.php");
+    header("Location: matakuliah.php");
 }
 
 if (isset($_POST['hapus'])) {
     $id = $_POST['id'];
     $deleteQuery = "DELETE FROM matakuliah WHERE id=$id";
     $conn->query($deleteQuery);
-    header("Location: index.php");
+    header("Location: matakuliah.php");
 }
 ?>
