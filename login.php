@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Makassar');
 session_start();
 include_once("koneksi.php");
 function authenticateUser($username, $password, $conn)
@@ -29,15 +30,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (authenticateUser($username, $password, $conn)) {
         // Autentikasi berhasil
+        $message = "Login berhasil.";
         $_SESSION['username'] = $username;
-        
+
         $redirect = isset($_SESSION['redirect']) ? $_SESSION['redirect'] : 'index.php';
         header("Location: $redirect");
-        exit();
+        //exit();
     } else {
         // Autentikasi gagal
+        $message = "Login gagal.";
         $error_message = "Username atau password salah.";
     }
+
+    $logMessage = date('Y-m-d H:i:s') . ' - ' . $username . ' - ' . $message . PHP_EOL;
+    $logFilePath = 'login_logs.txt';
+
+    file_put_contents($logFilePath, $logMessage, FILE_APPEND);
+
 
     $conn->close();
 }

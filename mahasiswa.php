@@ -47,6 +47,9 @@ require_once("koneksi.php");
                                                     NO
                                                 </th>
                                                 <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+                                                    Foto
+                                                </th>
+                                                <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
                                                     NIM
                                                 </th>
                                                 <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
@@ -77,6 +80,13 @@ require_once("koneksi.php");
                                             ?>
                                                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $no++; ?></td>
+                                                    <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <?php if (!empty($row['foto'])) : ?>
+                                                            <img src="<?= $row['foto']; ?>" alt="Foto Profil" class="w-10 h-10 object-cover rounded-full">
+                                                        <?php else : ?>
+                                                            <p>Foto tidak tersedia</p>
+                                                        <?php endif; ?>
+                                                    </td>
                                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $row['nim']; ?></td>
                                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $row['nama_lengkap']; ?></td>
                                                     <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $row['jenis_kelamin']; ?></td>
@@ -254,7 +264,7 @@ require_once("koneksi.php");
                                 </div>
                                 <!-- Modal body -->
                                 <div class="p-6 space-y-6">
-                                    <form action="mahasiswa_crud.php" method="POST">
+                                    <form action="mahasiswa_crud.php" method="POST" enctype="multipart/form-data">
                                         <div class="grid grid-cols-6 gap-2">
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="nim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIM</label>
@@ -293,6 +303,10 @@ require_once("koneksi.php");
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="no_telepon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No. Telepon</label>
                                                 <input type="text" name="no_telepon" id="no_telepon" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="08215678876" required>
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
+                                                <input type="file" name="foto" id="foto" class="" accept="image/*" required>
                                             </div>
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="prodi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program Studi</label>
